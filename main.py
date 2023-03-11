@@ -1,11 +1,23 @@
-from loader import read_excel
+import pandas as pd
+import numpy as np
+
+from loader import (
+    read_xlsx,
+    read_csv,
+    xlsx_to_csv
+)
+
+from plotter.basic_columns_plots import (
+    plot_source,
+    plot_dates
+)
 
 
-def tweet(path, file_name):
-    df = read_excel(path, sheet_name=file_name)
+def tweet(path):
+    df = read_csv(path)
 
-    print(df.columns)
+    plot_dates(df)
 
 
 if __name__ == '__main__':
-    tweet("data/raw", "Tweets_ny_newyears_all_cols.xlsx")
+    tweet("data/raw/Tweets_ny_newyears_all_cols.csv")
